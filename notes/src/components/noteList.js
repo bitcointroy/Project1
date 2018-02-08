@@ -5,24 +5,25 @@ import { getNotes } from '../store/actions';
 
 class NoteList extends Component {
 	componentDidMount() {
-		this.props.getNotes();
+    this.props.getNotes();
+    console.log('PROPS:', this.props);
 	}
 	render() {
-		return
+		return(
 		<div>
 			<h1>NoteList</h1>
 			<ul>
 				{this.props.notes.map((note) => {
-					return <li>{note.text}</li>;
+				return <li key={note.note_id}>{note.note_title}</li>;
 				})}
 			</ul>
-		</div>;
-	}
+    </div>
+  )};
 }
 
 const mapStateToProps = state => ({
 	
-		notes: state
+		notes: state.notes
 });
 
 export default connect(mapStateToProps, { getNotes })(NoteList);

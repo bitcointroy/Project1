@@ -13,7 +13,7 @@ export const getNotes = () => {
 		axios
 			.get(getUrl)
 			.then(({ data }) => {
-        console.log('HERE');
+        console.log('ACTIONS HERE');
 				dispatch({
 					type: NOTES_RECEIVED,
 					payload: data

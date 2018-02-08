@@ -17,14 +17,6 @@
       "companyId": "1"
     },
     {
-      "id": "5",
-      "firstName": "Karen",
-      "lastName": "Smith",
-      "email": "karen@gmail.com",
-      "age": 34,
-      "companyId": "2"
-    },
-    {
       "id": "3",
       "firstName": "Mark",
       "lastName": "Williams",
@@ -39,6 +31,14 @@
       "age": 26,
       "companyId": "2",
       "id": "4"
+    },
+    {
+      "firstName": "Troy",
+      "lastName": "Williams",
+      "email": "TW@gmail.com",
+      "age": 26,
+      "companyId": "3",
+      "id": "btlA3Uq"
     }
   ],
   "companies": [

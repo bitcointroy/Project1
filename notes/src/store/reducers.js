@@ -6,10 +6,11 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case GETTING_NOTES:
-			return;
+			return state;
 		case NOTES_RECEIVED:
 			return {...state, notes: action.payload};
 		default:
-			break;
+			return state;
 	}
 };
+
