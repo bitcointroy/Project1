@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import { SSL_OP_PKCS1_CHECK_1 } from "constants";
 import { connect } from 'react-redux';
-import { getNotes } from '../store/actions';
+import { getNotes, deleteNote } from '../store/actions';
 
 class NoteList extends Component {
 	componentDidMount() {
@@ -14,7 +13,8 @@ class NoteList extends Component {
 			<h1>NoteList</h1>
 			<ul>
 				{this.props.notes.map((note) => {
-				return <li key={note.note_id}>{note.note_title}</li>;
+        return <li key={note.id}>{note.note_title}  
+        <button onClick={() => this.props.deleteNote(note.id)}>Delete</button></li>;
 				})}
 			</ul>
     </div>
@@ -22,8 +22,7 @@ class NoteList extends Component {
 }
 
 const mapStateToProps = state => ({
-	
 		notes: state.notes
 });
 
-export default connect(mapStateToProps, { getNotes })(NoteList);
+export default connect(mapStateToProps, { getNotes, deleteNote })(NoteList);
