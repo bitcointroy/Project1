@@ -15,7 +15,7 @@ export const getNotes = () => {
 		axios
 			.get(getUrl)
 			.then(({ data }) => {
-        console.log('ACTIONS HERE');
+				console.log('ACTIONS HERE');
 				dispatch({
 					type: NOTES_RECEIVED,
 					payload: data
@@ -34,7 +34,7 @@ export const getNotes = () => {
 // 			.get(getUrl)
 // 			.then(({ data }) => {
 //         console.log('Preparing to Filter');
-				
+
 //       })
 //       .then(({data})) => {
 //         data.filter()
@@ -47,27 +47,22 @@ export const getNotes = () => {
 // 	};
 // };
 
-
 export const deleteNote = (id) => {
-  const deleteUrl = `http://localhost:3000/notes/${id}`;
+	const deleteUrl = `http://localhost:3000/notes/${id}`;
 	return (dispatch) => {
 		dispatch({
 			type: DELETING_NOTE
 		});
 		axios
 			.delete(deleteUrl)
-			.then(({ data }) => {
-        console.log('delete ACTIONS HERE');
-				dispatch({
-					type: NOTE_DELETED,
-					payload: data
-        });
-        console.log(data);
-      })
-      .then(({ data }) => dispatch({
-        type: NOTES_RECEIVED,
-        payload: data
-      }))
-			.catch((err) => console.log(err));
-  };
-};
+			.then(axios.get(getUrl)
+				.then(({ data }) => {
+						console.log('delete', data);
+						dispatch({ type: NOTES_RECEIVED, payload: data });
+				})
+				.catch((err) => {
+						console.log(err);
+				})
+			)
+	};
+}

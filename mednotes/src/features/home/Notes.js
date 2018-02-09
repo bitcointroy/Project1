@@ -10,12 +10,15 @@ export class Notes extends Component {
     actions: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    this.props.actions.fetchNoteList;
+    console.log('PROPS', this.props);
+  }
+
   render() {
     return (
       <div className="home-notes">
         Page Content: home/Notes
-        {this.props.actions.fetchNoteList}
-        {console.log('PROPS', this.props)}
       </div>
     );
   }

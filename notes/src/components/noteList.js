@@ -7,14 +7,25 @@ class NoteList extends Component {
     this.props.getNotes();
     console.log('PROPS:', this.props);
 	}
+
+	deleteANote = (e, index) => {
+		this.props.deleteNote(index);
+		this.props.getNotes();
+	}
+
+	// componentWillReceiveProps(nextState) {
+	// 	this.props.getNotes();
+	// 	console.log('Updated PROPS:', this.props);
+	// }
+
 	render() {
 		return(
 		<div>
 			<h1>NoteList</h1>
 			<ul>
 				{this.props.notes.map((note) => {
-        return <li key={note.id}>{note.note_title}  
-        <button onClick={() => this.props.deleteNote(note.id)}>Delete</button></li>;
+        return <li className="notelist" key={note.id}>{note.note_title}  
+        <button onClick={(e) => this.deleteANote(e, note.id)}>Delete</button></li>;
 				})}
 			</ul>
     </div>
